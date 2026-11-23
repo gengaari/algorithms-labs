@@ -15,7 +15,7 @@ def sink(arr, i, n, stats=None, trace=False):
         stats["assignments"] += 1
 
     while True:
-        j = 2 * k + 1  # Індекс лівого дочірнього елемента
+        j = 2 * k + 1
         if stats is not None:
             stats["assignments"] += 1
 
@@ -24,7 +24,6 @@ def sink(arr, i, n, stats=None, trace=False):
                 print(f"Елемент {arr[k]} на індексі {k} досяг кінця купи. Завершуємо.")
             break
 
-        # Знаходимо індекс найбільшого дочірнього елемента
         if j + 1 < n:
             if stats is not None:
                 stats["comparisons"] += 1
@@ -41,7 +40,6 @@ def sink(arr, i, n, stats=None, trace=False):
             if trace:
                 print(f"Обираємо лівий дочірній елемент: {arr[j]} на індексі {j}")
 
-        # Якщо поточний елемент більший або дорівнює найбільшому дочірньому
         if stats is not None:
             stats["comparisons"] += 1
         if arr[k] >= arr[j]:
@@ -49,7 +47,6 @@ def sink(arr, i, n, stats=None, trace=False):
                 print(f"{arr[k]} (батько) >= {arr[j]} (найбільший дочірній). Елемент на своєму місці.")
             break
 
-        # Міняємо місцями та продовжуємо занурення
         if trace:
             print(f"Міняємо місцями {arr[k]} (батько) та {arr[j]} (дочірній)")
         swap(arr, k, j)
@@ -70,7 +67,6 @@ def heapsort(arr, trace=False):
     stats = {"comparisons": 0, "assignments": 1}
     print(f"Початковий масив: {arr}\n")
 
-    # Фаза 1: Побудова максимальної купи
     print("--- Фаза 1: Побудова максимальної купи ---")
     for i in range(n // 2 - 1, -1, -1):
         if trace:
@@ -81,7 +77,6 @@ def heapsort(arr, trace=False):
 
     print(f"\nМасив після побудови купи: {arr}\n")
 
-    # Фаза 2: Сортування
     print("--- Фаза 2: Сортування ---")
     for i in range(n - 1, 0, -1):
         print(f"Міняємо місцями корінь ({arr[0]}) та останній елемент ({arr[i]})")
@@ -100,7 +95,6 @@ def heapsort(arr, trace=False):
 
 
 if __name__ == "__main__":
-    # Варіант № 15
     variant_15 = [50, 80, 19, 86, 35, 7, 60, 48, 51]
 
     print("=== ЗАПУСК БАЗОВОЇ РЕАЛІЗАЦІЇ (ТАБЛИЦЯ 3.3) ===")
